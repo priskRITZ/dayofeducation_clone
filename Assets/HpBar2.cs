@@ -34,28 +34,7 @@ public class HpBar2 : MonoBehaviour
         maxHeight = backgroundTransform.sizeDelta.y;
 
         _script.HpStatusBroadCastDelegates += UpdateHpStatus;
-        _script.HpStatusBroadCastDelegates += UpdateHpStatus;
-        _script.HpStatusBroadCastDelegates += UpdateHpStatus;
-        _script.HpStatusBroadCastDelegates += UpdateHpStatus;
         
-        _script.funcs.Add(UpdateHpStatus);
-        _script.funcs.Add(UpdateHpStatus);
-        _script.funcs.Add(UpdateHpStatus);
-        _script.funcs.Add(UpdateHpStatus);
-        
-        _script.HpStatusBroadCastDelegates?.Invoke(3, 5);
-        
-        foreach (var scriptFunc in _script.funcs)
-        {
-            scriptFunc?.Invoke(3, 5);
-        }
-
-        // Action<float, float> action = (float currentHp, float maxHp) => { UpdateHpStatus(currentHp, maxHp); };
-        //
-        // var hpBar2 = this;
-        // hpBar2 += action;
-        //
-        // _callbacks.Add(action);
     }
 
     public void UpdateHpStatus(float currentHp, float maxHp)

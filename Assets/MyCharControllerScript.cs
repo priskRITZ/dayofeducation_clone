@@ -9,6 +9,8 @@ public class MyCharControllerScript : MonoBehaviour
 {
     public HpStatusBroadCast HpStatusBroadCastDelegates;
     public List<Action<float, float>> funcs = new List<Action<float, float>>();
+
+    public float BlendTime = 0.0f;
     
     public float MoveSpeed = 5.0f;
     public float RotSpeed = 180.0f;
@@ -64,7 +66,25 @@ public class MyCharControllerScript : MonoBehaviour
         {
             CurrentHp -= 10;
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            // stateName은 애니메이션 이름
+            // normalizedTransitionDuration은 CrossFade 전환 시간
+            // layer 는 상하 분리 할때 쓴다. 지금은 -1(baseLayer)
+            // norlaizedTimeOffset 애니메이션 길이를 0~1이라고 봤을때 몇퍼센트 쯤부터 재생할지 결정함 10%면 0.1
+            GetComponent<Animator>().CrossFade("Punching", BlendTime, -1, 0);
+        }
         
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            // stateName은 애니메이션 이름
+            // normalizedTransitionDuration은 CrossFade 전환 시간
+            // layer 는 상하 분리 할때 쓴다. 지금은 -1(baseLayer)
+            // norlaizedTimeOffset 애니메이션 길이를 0~1이라고 봤을때 몇퍼센트 쯤부터 재생할지 결정함 10%면 0.1
+            GetComponent<Animator>().SetTrigger("Punching");
+        }
+
     }
     
     private void FixedUpdate()
