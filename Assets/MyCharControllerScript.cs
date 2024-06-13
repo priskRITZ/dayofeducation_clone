@@ -70,13 +70,14 @@ public class MyCharControllerScript : MonoBehaviour
     }
 
     IEnumerator ComboSystem()
-    { 
+    {
         // 콤보 카운트 먼저 증가
         _ComboNumber++;
         GetComponent<Animator>().CrossFade("Punching_B", BlendTime, -1, OffsetTime);
 
         // 일드를 한번 하는 이유는 애니를 재생하라고 요청하는거라서 1frame은 기다려야
         yield return null; 
+        _PressedButton = false; 
         
         while (true)
         {
